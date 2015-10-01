@@ -22,7 +22,7 @@ function runExtensions(){
 
 			// Do this via new availability service...
 			
-			var availServer = ""; // New Aleph availability server address
+			var availServer = "/library-availability/library";
 			var availabilityDiv = '<div class="availability"></div>';
 			var availabilityHeadDiv = 'div.availabilityHeader';
 			var insert_avail = new JuiceInsert(availabilityDiv,availabilityHeadDiv,"replace");
