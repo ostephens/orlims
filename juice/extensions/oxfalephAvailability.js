@@ -94,7 +94,7 @@ oxfalephAvailability.prototype.getoxfaleph = function(oxfalephId){
                     $jq.each(data.document[0].item, function(index, oxfaleph_doc) {
                         var library_info = '';
                         if(libWeb[oxfaleph_doc.libcode]) {
-                            library_info = '<a href="'+libWeb[oxfaleph_doc.libcode]+'"><i class="fa fa-info-circle"></i></a>';
+                            library_info = '<a target="_blank" href="'+libWeb[oxfaleph_doc.libcode]+'"><i class="fa fa-info-circle"></i></a>';
                         }
                         holdings_html += '<tr class="'+oxfaleph_doc.libcode+' collapsed'+'"><td>'+oxfaleph_doc.libname+'</td>'+
                                          '<td>'+oxfaleph_doc.itemshelf+'</td>'+
