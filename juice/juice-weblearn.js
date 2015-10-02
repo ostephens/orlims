@@ -40,14 +40,22 @@ function runExtensions(){
             new oxfalephAvailability(juice,insert_avail,"availability","aleph_ids",availServer,"print","jsonp");
         }
 
-        if(juice.hasMeta("coins")) {
+        if(juice.hasMeta("eavail_ids")) {
             // ****************    
             // Get Electronic Availability
             // ****************
-            var eavailServer = "https://weblearn.ox.ac.uk/library-availability/library"; // DAIA server for electronic availability
-            var eavailabilityDiv = '<div id="e-availability"></div>';
-            var baseURL = "http://oxfordsfx-direct.hosted.exlibrisgroup.com/oxford?";
-            var insert_eavail = new JuiceInsert(eavailabilityDiv,"span.Z3988","after");
+            var base_url = "http://oxfordsfx-direct.hosted.exlibrisgroup.com/oxford?";
+            openurls = new(Array);
+            var coins = juice.getMetaValues("eavail_ids");
+            for (var i = 0; i < coins.length; i++){
+                openurls.push(base_url + coins[i]);
+            };
+            juice.setMeta("openurls",openurls);
+
+            var eavailServer = "/library-availability/eias"; // DAIA server for electronic availability
+            var eavailabilityDiv = '<div class="e-avail"></div>';
+            var insert_eavail = new JuiceInsert(eavailabilityDiv,"div.itemAction.links","prepend");
+            new oxfelectronicAvailability(juice,insert_eavail,"e-avail","openurls",eavailServer);
         }
 
         // ****************    
